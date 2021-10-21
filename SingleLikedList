@@ -1,0 +1,36 @@
+package SingleLinkedList; //在单链表的包里
+//创建节点Node类
+class Node {
+    private Object element; // 节点的属性之一：数值
+    private Node next; // 节点的属性之二：后继指针
+    
+    //初始化节点
+    Node(Object data, Node next_val) {
+        element = data;
+        next = next_val;
+    }
+    
+    // 后继的值
+    Node(Node next_val) {
+        next = next_val;
+    }
+    
+    //设置next方法，获取当前节点带有的指针
+    Node next() {
+        return next;
+    }
+    
+    //setNext方法，设置当前节点的指针指向为下一个节点
+    Node setNext(Node next_val) {
+        return next = next_val;
+    }
+    // 获取当前节点的值
+    Object element() {
+        return element;
+    }
+    
+    //给当前节点赋值的方法
+    Object setElement(Object data) {
+        return element = data;
+    }
+}
