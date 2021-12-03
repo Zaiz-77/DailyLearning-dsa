@@ -1,2 +1,3 @@
 # DailyLearning-dsa
-记录本人在学习过程中的实践问题，主要采用Python和Java语言编写
+## 本项目记录了本人在学习数据结构课程中的实践问题，以供参考
+## 如有疑惑或者建议，联系邮箱KandQwangkai@163.com
