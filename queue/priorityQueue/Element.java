@@ -11,7 +11,7 @@ public class Element {
         priority = pri;
     }
 
-    // 对私有对线的获取和设置
+    // 对私有对象的获取和设置
     public Object getElem() {
         return elem;
     }
