@@ -1,34 +1,42 @@
 package com.dsa.unionFind;
 
-// 并查集
 public class UnionFind {
-    UnionFindNode [] set; // 集合
-    int n; // 集合中元素的个数
+    // good存的是第i个东西的大爹
+    int[] good;
+    // cnt存的第i个大爹带了几个小弟
+    int[] cnt;
+    // 大爹的个数
+    int v;
 
-    // 初始化
-    public UnionFind(int sz){
-        n = sz;
-        set = new UnionFindNode[n];
+    public UnionFind() {
+    }
 
-        // 初始化的集合
-        for (int i = 1; i < n; i++) {
-            set[i] = new UnionFindNode();
-            set[i].data = i;
-            set[i].parent = -1;
+    public void init (int n) {
+        good = new int[n + 1];
+        cnt = new int[n + 1];
+        v = n;
+        for (int i = 1; i <= n; i++) {
+            good[i] = i;
+            cnt[i] = 1;
         }
     }
 
-    // find 方法,去找i的最根处的结点
-    public int Find(int i){
-        int cursor = i;
-        while (set[cursor].parent >= 0) cursor = set[cursor].parent;
-        return cursor;
+    public int find (int e) {
+        while (e != good[e]) e = find(good[e]);
+        return e;
     }
 
-    // union方法,将不相同根的集合并起来
-    public void Union(int i, int j){
-        set[j].parent = i; // 就是j去往上找的时候先找i
-        int temp = Find(i); // 找到i的那个根
-        set[temp].parent -= 1; // 多挂了一个j，所以要-1
+    public void union (int a, int b) {
+        int r1 = find(a);
+        int r2 = find(b);
+        if (r1 == r2) return;
+        if (cnt[r1] > cnt[r2]) {
+            cnt[r1] += cnt[r2];
+            good[r2] = r1;
+        } else {
+            cnt[r2] += cnt[r1];
+            good[r1] = r2;
+        }
+        v--;
     }
 }
